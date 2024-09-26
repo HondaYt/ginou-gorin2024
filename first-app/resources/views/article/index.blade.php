@@ -1,4 +1,14 @@
-<h1>{{$title}}</h1>
-@foreach ($json as $response)
-<p>{{$response['name']}}</p>
-@endforeach
+@extends('layouts.template')
+
+@section('name', 'honda')
+
+@section('content')
+
+    <h1>{{ $title }}</h1>
+
+    @foreach ($articles as $response)
+        <h2>{{ $response['title'] }}</h2>
+        <p>{{ $response['body'] }}</p>
+    @endforeach
+
+@endsection

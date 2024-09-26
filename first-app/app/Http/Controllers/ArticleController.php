@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -12,23 +13,18 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
-        // return "Hello Laravel";
         $title = "Article - Index";
-        $json = [
-            [
-                'name' => 'honda',
-                'age' => '20',
-            ],
-            [
-                'name' => 'takuto',
-                'age' => '19',
-            ],
-        ];
-        // return json_encode($json); //コンテンツタイプがhtml
-        // return response()->json($json);
-        // return view("article.index", ['title' => $title], ['json' => $json]);
-        return view("article.index", compact('title', 'json'));
+        $articles = new Article();
+
+        // return view("article.index", compact('title','articles'));
+        // return Article::get();
+
+        return $articles
+            ->orderBy('id', 'DESC')
+            ->where('title','=','サンプル2のタイトル')
+            ->orWhere('title','=','サンプル3のタイトル')
+            ->select('title')
+            ->get();
     }
 
     /**
@@ -52,7 +48,10 @@ class ArticleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // return Article::find($id);
+
+        $article = new Article();
+        return $article->find($id);
     }
 
     /**
