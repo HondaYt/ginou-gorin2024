@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,17 +15,18 @@ class ArticleController extends Controller
     public function index()
     {
         $title = "Article - Index";
-        $articles = new Article();
+        $articles = (new Article())->get();
 
-        // return view("article.index", compact('title','articles'));
-        // return Article::get();
+        // return view("article.index", compact('title', 'articles'));
 
-        return $articles
-            ->orderBy('id', 'DESC')
-            ->where('title','=','サンプル2のタイトル')
-            ->orWhere('title','=','サンプル3のタイトル')
-            ->select('title')
-            ->get();
+        return ArticleResource::collection($articles);
+
+        // return $articles
+        //     // ->orderBy('id', 'DESC')
+        //     // ->where('title', '=', 'サンプル2のタイトル')
+        //     // ->orWhere('title', '=', 'サンプル3のタイトル')
+        //     // ->select('title')
+        //     ->get();
     }
 
     /**
@@ -33,6 +35,7 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        return view('article.create');
     }
 
     /**
@@ -40,7 +43,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->session()->regenerate();
+
+        $article = new Article();
+        $article->title = $request->input('title');
+        $article->save();
+        return redirect()->route('article.index');
     }
 
     /**
@@ -51,7 +59,11 @@ class ArticleController extends Controller
         // return Article::find($id);
 
         $article = new Article();
-        return $article->find($id);
+        $article = $article->find($id);
+
+
+
+        return $article;
     }
 
     /**
@@ -60,6 +72,7 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         //
+        return view('article.edit', compact('id'));
     }
 
     /**
@@ -67,7 +80,15 @@ class ArticleController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $article = new Article();
+        $article = $article->find($id);
+
+        $article->title = $request->input('title');
+        $article->body = $request->input('body');
+
+        $article->save();
+
+        return redirect()->route('article.index');
     }
 
     /**
@@ -75,6 +96,10 @@ class ArticleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $article = new Article();
+        $article = $article->find($id);
+        $article->delete();
+
+        return redirect()->route('article.index');
     }
 }
