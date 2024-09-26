@@ -12,4 +12,10 @@ class Article extends Model
     use SoftDeletes;
 
     protected $table = 'articles';
+
+    public function thumbnails()
+    {
+        // return $this->hasMany(Thumbnail::class);
+        return $this->hasOne(Thumbnail::class, 'article_id');
+    }
 }
