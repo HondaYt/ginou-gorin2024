@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信号機アニメーション</title>
+    <style>
+        .traffic-light {
+            width: 50px;
+            height: 150px;
+            background-color: black;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .light {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        @keyframes greenLight {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            50.01%,
+            100% {
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes yellowLight {
+
+            0%,
+            50%,
+            62.5%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50.01%,
+            62.49% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes redLight {
+
+            0%,
+            62.5% {
+                opacity: 0.2;
+            }
+
+            62.51%,
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .green {
+            background-color: green;
+            animation: greenLight 8s infinite;
+        }
+
+        .yellow {
+            background-color: yellow;
+            animation: yellowLight 8s infinite;
+        }
+
+        .red {
+            background-color: red;
+            animation: redLight 8s infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="traffic-light">
+        <div class="light green"></div>
+        <div class="light yellow"></div>
+        <div class="light red"></div>
+    </div>
+</body>
+
+</html>
