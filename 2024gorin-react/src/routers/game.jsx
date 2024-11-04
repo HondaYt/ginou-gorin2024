@@ -104,7 +104,8 @@ export default function Game() {
 					![1, 3].includes(field[boxNewPos.row][boxNewPos.col])
 				) {
 					if (field[boxNewPos.row][boxNewPos.col] === 4) {
-						handleGoal();
+						alert("gameOver");
+						window.location.reload();
 					}
 					newField[boxNewPos.row][boxNewPos.col] = 3;
 					newField[newPos.row][newPos.col] = 2;
