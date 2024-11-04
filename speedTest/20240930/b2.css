@@ -1,0 +1,90 @@
+.container {
+    display: flex;
+    background: gray;
+    border-radius: 50vh;
+    gap: 8px;
+    padding: 8px;
+    width: fit-content;
+}
+
+.child {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 20%;
+
+    &#blue {
+        animation: blue 10s infinite;
+        background: blue;
+    }
+
+    &#yellow {
+        animation: yellow 10s infinite;
+        background: yellow;
+    }
+
+    &#red {
+        animation: red 10s infinite;
+        background: red;
+    }
+}
+
+
+@keyframes blue {
+    0%{
+        opacity: 100%;
+    }
+    40%{
+        opacity: 100%;
+    }
+    41% {
+        opacity: 20%;
+    }
+    100% {
+        opacity: 20%;
+    }
+}
+
+@keyframes yellow {
+    0%{
+
+        opacity: 20%;
+    }
+    39%{
+        opacity: 20%;
+
+    }
+    40% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    51% {
+        opacity: 20%;
+    }
+    100% {
+        opacity: 20%;
+    }
+}
+@keyframes red {
+    0%{
+        opacity: 20%;
+
+    }
+    49% {
+        opacity: 20%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    80% {
+        opacity: 100%;
+    }
+    81% {
+        opacity: 20%;
+    }
+    100% {
+        opacity: 20%;
+    }
+}

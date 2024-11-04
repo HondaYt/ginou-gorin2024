@@ -1,0 +1,21 @@
+div{
+    width: 80px;
+    height: 80px;
+    display: grid;
+    place-items: center;
+    border: 1px black solid;
+}
+
+input[type='checkbox']{
+    display: none;
+}
+
+input[type='checkbox']:checked + div{
+    background: yellow;
+    border: 4px solid #000;
+}
+
+body{
+    display: flex;
+    gap: 8px;
+}
