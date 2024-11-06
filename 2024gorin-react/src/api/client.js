@@ -1,7 +1,7 @@
 // API のベース URL
-export const API_BASE_URL = "http://10.17.10.10:85"; //学校サーバー
+// export const API_BASE_URL = "http://10.17.10.10:85"; //学校サーバー
 // export const API_BASE_URL = "http://192.168.3.9:8085"; //自宅サーバーLocal
-// export const API_BASE_URL = "http://60.128.8.146:8085"; //自宅サーバーGlobal
+export const API_BASE_URL = "http://60.128.8.146:8085"; //自宅サーバーGlobal
 
 // 認証付きのリクエストを行うヘルパー関数
 const authFetch = async (endpoint, options = {}) => {

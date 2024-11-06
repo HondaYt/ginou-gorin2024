@@ -42,7 +42,7 @@ export default function Profile() {
 		e.preventDefault();
 		try {
 			await api.users.updateProfile({ username, nickname });
-			navigate("/select");
+			// navigate("/select");
 		} catch (error) {
 			console.error("プロフィール更新エラー:", error);
 			alert("エラーが発生しました");

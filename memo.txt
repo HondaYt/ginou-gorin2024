@@ -1,0 +1,22 @@
+events
+    id primary
+    title
+    address
+    date
+
+workers
+    id
+    name
+    password
+    note
+
+users
+    id
+    email
+    password
+
+dispatches
+    event_id foreign
+    worker_id foreign
+    approval
+    note
