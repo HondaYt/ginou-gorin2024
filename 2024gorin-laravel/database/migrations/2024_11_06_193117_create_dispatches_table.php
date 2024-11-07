@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('dispatches', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained();
-            $table->foreignId('worker_id')->constrained();
+            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('worker_id')->constrained()->cascadeOnDelete();
             $table->boolean('approval')->default(false);
             $table->text('note')->nullable();
             $table->timestamps();
