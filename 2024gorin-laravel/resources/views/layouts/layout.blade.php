@@ -7,15 +7,24 @@
     <title>管理画面</title>
 </head>
 <body>
+    @auth
+        
     <header>
         <nav>
             <ul>
                 {{-- <li><a href="{{route("admin.index")}}">Top</a></li> --}}
                 <li><a href="{{route("index")}}">Top</a></li>
                 <li><a href="{{route("events.index")}}">Event</a></li>
+                
             </ul>
         </nav>
+        <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button type="submit">ログアウト</button>
+        </form>
     </header>
+    
+    @endauth
     <main>
         @yield('content')
     </main>
