@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+
+    protected $message = '';
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        $message='';
+        $message = $this->message;
         $events = Event::get();
         return view('admin.events.index', compact('events','message'));
     }
@@ -33,24 +36,24 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
-
         $request->session()->regenerateToken();
 
-        $message = '登録成功';
 
+        
         $request->validate([
             'title' => ['required'],
             'address' => ['required'],
         ]);
-
+        
         $event = new Event;
         $event->title = $request->title;
         $event->address = $request->address;
         $event->event_date = $request->event_date;
-
+        
         $event->save();
-
-        return redirect()->route('events.index');
+        
+        $this->message = '登録成功';
+        return redirect()->route('events.index')->with('message',$this->message);
     }
 
     /**
@@ -79,21 +82,21 @@ class EventController extends Controller
         //
         $request->session()->regenerateToken();
 
-        $message = '変更成功';
-
+        
         $request->validate([
             'title' => ['required'],
             'address' => ['required'],
         ]);
-
+        
         $event = Event::find($id);
         $event->title = $request->title;
         $event->address = $request->address;
         $event->event_date = $request->event_date;
-
+        
         $event->save();
-
-        return redirect()->route('events.index');
+        
+        $this->message= '変更成功';
+        return redirect()->route('events.index')->with('message',$this->message);
     }
 
     /**
@@ -102,8 +105,10 @@ class EventController extends Controller
     public function destroy(string $id)
     {
         //
+        
         $event = Event::find($id);
         $event->delete();
-        return redirect()->route('events.index');
+        $this->message= '削除成功';
+        return redirect()->route('events.index')->with('message',$this->message);
     }
 }

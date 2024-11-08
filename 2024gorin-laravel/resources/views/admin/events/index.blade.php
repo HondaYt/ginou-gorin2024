@@ -3,6 +3,7 @@
 @section('content')
 
 <a href="{{route('events.create')}}">新規登録</a>
+<p>{{session('message')}}</p>
 <ul>
     @foreach ($events as $event)   
     <li>
@@ -10,7 +11,6 @@
         {{$event->address}}
         {{$event->event_date}}
 
-        <p>{{$message}}</p>
         <div>
             <a href="{{route('events.edit',$event->id)}}">編集</a>
         </div>
