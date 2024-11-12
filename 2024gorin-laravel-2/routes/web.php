@@ -9,5 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('admin', AdminController::class);
-Route::resource('admin/events', EventController::class);
+Route::prefix('admin')->group(function () {
+    Route::resource('/', AdminController::class);
+    Route::resource('events', EventController::class);
+});
