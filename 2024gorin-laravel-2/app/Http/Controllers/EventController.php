@@ -67,7 +67,20 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->session()->regenerateToken();
+
+        $request->validate([
+            'title' => ['required'],
+        ]);
+
+        $event = new Event;
+        $event->title = $request->title;
+        $event->address = $request->address;
+        $event->event_date = $request->event_date;
+
+        $event->save();
+
+        return redirect()->route('events.index');
     }
 
     /**
