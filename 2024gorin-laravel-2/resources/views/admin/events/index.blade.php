@@ -9,6 +9,7 @@
         <h1>{{$event->title}}</h1>
         <p>{{$event->address}}</p>
         <p>{{$event->event_date}}</p>
+        <a href="{{route('events.edit',$event->id)}}">編集</a>
     </li>
     @endforeach
 </ul>
