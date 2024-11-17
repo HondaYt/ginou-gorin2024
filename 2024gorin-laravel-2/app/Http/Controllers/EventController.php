@@ -31,6 +31,10 @@ class EventController extends Controller
     {
         $request->session()->regenerateToken();
 
+        $request->validate([
+            'title' => ['required'],
+        ]);
+
         $event = new Event;
         $event->title = $request->title;
         $event->address = $request->address;
