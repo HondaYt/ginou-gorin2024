@@ -1,3 +1,6 @@
+@extends('layouts.layout')
+
+@section('content')
 <div>
     @error('auth')
     <p>{{$message}}</p>
@@ -21,3 +24,5 @@
         <button type="submit">ログイン</button>
     </form>
 </div>
+
+@endsection

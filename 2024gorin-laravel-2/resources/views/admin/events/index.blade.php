@@ -1,3 +1,6 @@
+@extends('layouts.layout')
+
+@section('content')
 <ul>
     @foreach ($events as $event)
     <li>
@@ -7,3 +10,4 @@
     </li>
     @endforeach
 </ul>
+@endsection
