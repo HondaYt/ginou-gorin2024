@@ -16,7 +16,7 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
-Route::prefix('admin')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('/', AdminController::class);
     Route::resource('events', EventController::class);
 });
