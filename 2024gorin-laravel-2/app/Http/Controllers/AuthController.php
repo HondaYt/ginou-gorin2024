@@ -19,7 +19,14 @@ class AuthController extends Controller
     {
         $request->session()->regenerateToken();
 
-        $validate = $request->only('email', 'password');
+        // $validate = $request->only('email', 'password');
+        $validate = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ], [
+            'email.required' => 'emailが未入力です。',
+            'password.required' => 'passwordが未入力です。',
+        ]);
 
         if (Auth::attempt($validate)) {
             return redirect()->intended('admin');
