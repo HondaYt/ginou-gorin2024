@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -12,6 +13,20 @@ class AuthController extends Controller
     public function index()
     {
         return view('auth.index');
+    }
+
+    public function login(Request $request)
+    {
+        $request->session()->regenerateToken();
+
+        $validate = $request->only('email', 'password');
+
+        if (Auth::attempt($validate)) {
+            return redirect()->intended('admin');
+        }
+        return back()->withInput()->withErrors([
+            'auth' => '認証に失敗'
+        ]);
     }
 
     /**

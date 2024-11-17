@@ -11,7 +11,9 @@ Route::get('/', function () {
 });
 
 Route::prefix('auth')->group(function () {
-    Route::resource('/', AuthController::class);
+    // Route::resource('/', AuthController::class);
+    Route::get('login', [AuthController::class, 'index'])->name('login');
+    Route::post('login', [AuthController::class, 'login'])->name('login');
 });
 
 Route::prefix('admin')->group(function () {
