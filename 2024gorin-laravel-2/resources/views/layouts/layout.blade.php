@@ -7,12 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    @auth
     <header>
         <ul>
             <li><a href="{{route('index')}}">top</a></li>
             <li><a href="{{route('events.index')}}">events</a></li>
         </ul>
     </header>
+    @endauth
     <main>
         @yield('content')
     </main>
