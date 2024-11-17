@@ -42,7 +42,8 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')
+            ->with('message', 'イベントを登録しました。');
     }
 
     /**
@@ -80,7 +81,8 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')
+            ->with('message', 'イベントを更新しました。');
     }
 
     /**
@@ -90,6 +92,7 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->delete();
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')
+            ->with('message', 'イベントを削除しました。');
     }
 }
