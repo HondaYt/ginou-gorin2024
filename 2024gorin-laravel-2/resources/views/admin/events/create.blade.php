@@ -2,7 +2,7 @@
 
 @section('content') 
 <div>
-    <form action="" method="POST">
+    <form action="{{route('events.store')}}" method="POST">
         @csrf
 
         <div>
