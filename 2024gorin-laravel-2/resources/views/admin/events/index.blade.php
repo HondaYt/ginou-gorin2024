@@ -1,6 +1,8 @@
 @extends('layouts.layout')
 
 @section('content')
+<a href="{{route('events.create')}}">新規登録</a>
+
 <ul>
     @foreach ($events as $event)
     <li>
