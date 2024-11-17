@@ -10,7 +10,11 @@
         <p>{{$event->address}}</p>
         <p>{{$event->event_date}}</p>
         <a href="{{route('events.edit',$event->id)}}">編集</a>
-        <form action="{{route('events.destroy',$event->id)}}" method="POST">
+        <form 
+            action="{{route('events.destroy',$event->id)}}" 
+            method="POST"
+            onsubmit="return confirm('本当に削除してもよろしいですか？');"
+        >
             @csrf
             @method('DELETE')
             
