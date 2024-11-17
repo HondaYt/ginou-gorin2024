@@ -73,7 +73,7 @@ class EventController extends Controller
             'title' => ['required'],
         ]);
 
-        $event = new Event;
+        $event = Event::find($id);
         $event->title = $request->title;
         $event->address = $request->address;
         $event->event_date = $request->event_date;

@@ -2,8 +2,9 @@
 
 @section('content') 
 <div>
-    <form action="{{route('events.store')}}" method="POST">
+    <form action="{{route('events.update', $event->id)}}" method="POST">
         @csrf
+        @method('PUT')
 
         <div>
             <label for="title">Title:</label>
