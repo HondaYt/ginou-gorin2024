@@ -12,6 +12,10 @@
         <ul>
             <li><a href="{{route('index')}}">top</a></li>
             <li><a href="{{route('events.index')}}">events</a></li>
+            <form action="{{route('logout')}}" method="post">
+                @csrf
+                <button type="submit">ログアウト</button>
+            </form>
         </ul>
     </header>
     @endauth
