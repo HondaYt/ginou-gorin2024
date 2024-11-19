@@ -9,4 +9,9 @@ class Worker extends Model
 {
     /** @use HasFactory<\Database\Factories\WorkerFactory> */
     use HasFactory;
+
+    public function events()
+    {
+        return $this->belongsToMany(Event::class, 'dispatches')->withPivot('approval');
+    }
 }
